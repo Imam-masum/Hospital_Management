@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hospital_Management.Migrations
 {
-    public partial class scriptA : Migration
+    public partial class ScriptA : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,13 +25,13 @@ namespace Hospital_Management.Migrations
                 name: "Designations",
                 columns: table => new
                 {
-                    DesignationId = table.Column<int>(nullable: false)
+                    designationId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DesigRank = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Designations", x => x.DesignationId);
+                    table.PrimaryKey("PK_Designations", x => x.designationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,32 +72,17 @@ namespace Hospital_Management.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PtSymtomps",
-                columns: table => new
-                {
-                    PtSymtompId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InPtPrescriptionId = table.Column<int>(nullable: false),
-                    Instruction = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PtSymtomps", x => x.PtSymtompId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Testlists",
                 columns: table => new
                 {
-                    TestlistId = table.Column<int>(nullable: false)
+                    testlistId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TestName = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Testlists", x => x.TestlistId);
+                    table.PrimaryKey("PK_Testlists", x => x.testlistId);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,7 +131,7 @@ namespace Hospital_Management.Migrations
                         name: "FK_Doctors_Designations_DesignationId",
                         column: x => x.DesignationId,
                         principalTable: "Designations",
-                        principalColumn: "DesignationId",
+                        principalColumn: "designationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -307,7 +292,7 @@ namespace Hospital_Management.Migrations
                     IsReleased = table.Column<bool>(nullable: false),
                     PrescriptionDate = table.Column<DateTime>(nullable: false),
                     Instruction = table.Column<string>(nullable: true),
-                    Relase = table.Column<bool>(nullable: false)
+                    symptom = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -371,7 +356,7 @@ namespace Hospital_Management.Migrations
                         name: "FK_PatientTests_Testlists_TestlistId",
                         column: x => x.TestlistId,
                         principalTable: "Testlists",
-                        principalColumn: "TestlistId",
+                        principalColumn: "testlistId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -508,9 +493,6 @@ namespace Hospital_Management.Migrations
 
             migrationBuilder.DropTable(
                 name: "PntMedicines");
-
-            migrationBuilder.DropTable(
-                name: "PtSymtomps");
 
             migrationBuilder.DropTable(
                 name: "Schedules");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital_Management.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    [Migration("20221007134404_scriptA")]
-    partial class scriptA
+    [Migration("20221021102237_ScriptA")]
+    partial class ScriptA
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,7 +151,7 @@ namespace Hospital_Management.Migrations
 
             modelBuilder.Entity("Hospital_Management.Models.Designation", b =>
                 {
-                    b.Property<int>("DesignationId")
+                    b.Property<int>("designationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -159,7 +159,7 @@ namespace Hospital_Management.Migrations
                     b.Property<string>("DesigRank")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DesignationId");
+                    b.HasKey("designationId");
 
                     b.ToTable("Designations");
                 });
@@ -261,8 +261,8 @@ namespace Hospital_Management.Migrations
                     b.Property<DateTime>("PrescriptionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Relase")
-                        .HasColumnType("bit");
+                    b.Property<string>("symptom")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("InPtPrescriptionId");
 
@@ -420,27 +420,6 @@ namespace Hospital_Management.Migrations
                     b.ToTable("PntMedicines");
                 });
 
-            modelBuilder.Entity("Hospital_Management.Models.PtSymtomp", b =>
-                {
-                    b.Property<int>("PtSymtompId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("InPtPrescriptionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Instruction")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PtSymtompId");
-
-                    b.ToTable("PtSymtomps");
-                });
-
             modelBuilder.Entity("Hospital_Management.Models.Room", b =>
                 {
                     b.Property<int>("RoomId")
@@ -489,7 +468,7 @@ namespace Hospital_Management.Migrations
 
             modelBuilder.Entity("Hospital_Management.Models.Testlist", b =>
                 {
-                    b.Property<int>("TestlistId")
+                    b.Property<int>("testlistId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -500,7 +479,7 @@ namespace Hospital_Management.Migrations
                     b.Property<string>("TestName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TestlistId");
+                    b.HasKey("testlistId");
 
                     b.ToTable("Testlists");
                 });

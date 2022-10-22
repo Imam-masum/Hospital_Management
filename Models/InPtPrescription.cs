@@ -15,8 +15,8 @@ namespace Hospital_Management.Models
         public virtual Admission Admission { get; set; }
         public DateTime PrescriptionDate { get; set; }
         public string Instruction { get; set; }
-        public bool Relase { get; set; }
         
+        public string symptom { get; set; }
         public List<PntMedicine> PntMedicines { get; set; }
         public List<PatientTest> PatientTests { get; set; }
     }
